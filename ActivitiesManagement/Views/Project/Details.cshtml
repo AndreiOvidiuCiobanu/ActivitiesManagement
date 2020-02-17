@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ActivitiesManagement.Models.Project>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @foreach (var item in Model)
+        {
+            @Html.DisplayName(@item.Name)
+            <br />
+            <h3>@Html.Display(@item.Name)</h3>
+
+            <a href="@Url.Action("Show", "Todo", new { id = @item.Id })" class="btn btn-default">Go to tasks</a>
+            @*<a href="@Url.Action("Index", "PersonsInTeams", new { id = @item.TeamId })" class="btn btn-default">Go to persons</a>*@
+        }
+
+    </dl>
+</div>
+<p>
+    @*-- @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")*@
+</p>

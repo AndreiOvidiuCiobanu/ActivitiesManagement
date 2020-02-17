@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ActivitiesManagement.Models.Project>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (ViewBag.projects != null)
+{
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Project List</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" id="listLeasingCompany_Collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tableProjectList" class="table table-bordered table-striped avatar-img40" style="width:100%">
+                        <thead class="tableHead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.Projects)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        <a href="@Url.Action("Show", "Todo", new { id = item.Id })">Add Task</a>
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+</section>
+}
+<script type="text/javascript">$(document).ready(function () {
+            LoadDataTablesScripts(LoadProjectList);
+        });
+        function LoadProjectList() {
+            GenericDataTable('tableProjectList', 'No data available', 10, 1, 'asc', true, [2], [2]);
+        }</script>

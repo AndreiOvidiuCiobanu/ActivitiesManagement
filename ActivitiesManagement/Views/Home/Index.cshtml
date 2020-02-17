@@ -1,0 +1,7 @@
+﻿@model ActivitiesManagement.Models.ApplicationUser
+
+@foreach (ActivitiesManagement.Models.Project project in ViewBag.Projects)
+{
+    <br />
+    <button ><a href = "@Url.Action("Details", "Project",new { id = project.Id })">@project.Name</a></button>
+}

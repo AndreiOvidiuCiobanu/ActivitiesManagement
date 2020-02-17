@@ -1,0 +1,25 @@
+﻿@model ActivitiesManagement.Models.Comment
+@{
+    ViewBag.Title = "Editare comment";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Comment"))
+{
+    @Html.Hidden("Id", Model.Id)
+    @Html.Hidden("Id", Model.ApplicationUserId)
+    @Html.Hidden("Id", Model.TodoId)
+
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.Label("Comment", "Comment")
+    <br />
+    @Html.Editor("Point")
+    @Html.ValidationMessageFor(m => m.Point, "", new { @class = "text-danger" })
+    <br /><br />
+
+    <button class="btn btn-success" type="submit">Modifica commentul</button>
+}

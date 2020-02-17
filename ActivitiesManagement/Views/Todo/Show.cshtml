@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ActivitiesManagement.Models.Todo>
+@{
+}
+<a href="@Url.Action("Create", "Todo", new { id = ViewBag.ProjectId })" class="btn btn-default">Create a task</a>
+
+@*@foreach (var item in Model)
+    {
+        <dt>
+            @Html.DisplayName(@item.Title)
+        </dt>
+
+        <dd>
+            @Html.Display(@item.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayName(@item.Description)
+        </dt>
+
+        <dd>
+            @Html.Display(@item.Description)
+        </dd>
+    }*@
+
+@foreach (ActivitiesManagement.Models.Todo todo in Model)
+{
+    <br />
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Todo", routeValues: new { id = ViewBag.TaskId }))
+    {
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button class="btn btn-success" type="submit">Sterge task-ul</button>
+    }
+    <a href="@Url.Action("Show", "Comment",new { id = todo.Id })" class="btn btn-default">@todo.Title</a>
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ActivitiesManagement.Models.Todo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<p>
+    @Html.ActionLink("Add New Task", "Create")
+</p>*@
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Todo s list</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" id="listLeasingCompany_Collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="c" class="table table-bordered table-striped avatar-img40" style="width:100%">
+                        <thead class="tableHead">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.Todos)
+                            {
+                                <tr>
+                 
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        <a href="@Url.Action("Show", "Comment", new { id = item.Id })"> See Comments</a> |
+                                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
+                                        <a href="@Url.Action("Delete", "Todo", new { id = item.Id })">Delete</a> |
+
+                                       
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+</section>
+
+
+
